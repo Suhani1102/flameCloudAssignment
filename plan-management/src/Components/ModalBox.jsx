@@ -11,7 +11,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-function ModalBox({ isOpen, onClose, handleCreate, subCat }) {
+function ModalBox({ isOpen, onClose, handleCreate }) {
   const [value, setValue] = useState("");
   const handleChange = (event) => setValue(event.target.value);
 
@@ -19,7 +19,7 @@ function ModalBox({ isOpen, onClose, handleCreate, subCat }) {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent mx={"8px"}>
           <ModalHeader>Pointer Name</ModalHeader>
           <ModalCloseButton />
           <ModalBody>

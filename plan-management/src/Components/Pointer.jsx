@@ -5,7 +5,7 @@ const Pointer = ({ pointerData }) => {
   return (
     <div>
       {pointerData.map((item) => (
-        <Box>{item.pointerName}</Box>
+        <Box border={"1px solid #CBD5E1"}>{item.pointerName}</Box>
       ))}
     </div>
   );
