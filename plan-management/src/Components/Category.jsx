@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import SubCategory from "./SubCategory";
 
-const Category = ({ catData }) => {
+const Category = ({ catData, setPlanData }) => {
   console.log(catData);
   return (
     <div>
@@ -26,7 +26,12 @@ const Category = ({ catData }) => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                <SubCategory key={item.id} subCatData={item.subCategories} />
+                <SubCategory
+                  key={item.id}
+                  subCatData={item.subCategories}
+                  planData={catData}
+                  setPlanData={setPlanData}
+                />
               </AccordionPanel>
             </AccordionItem>
           );
