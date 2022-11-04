@@ -72,6 +72,7 @@ const PlanManagement = () => {
             colorScheme="messenger"
             variant="outline"
             marginRight={"10px"}
+            disabled={true}
           >
             <Icon as={BsPeople} w="5" h="5" mr={"5px"} /> Manage Access
           </Button>
@@ -82,6 +83,8 @@ const PlanManagement = () => {
             isOpen={showModal}
             onClose={() => setShowModal(false)}
             handleCreate={addCategory}
+            title="Plan Name"
+            placeholder={"Name Your Plan"}
           />
         </Box>
       </Box>

@@ -11,7 +11,14 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-function ModalBox({ isOpen, onClose, handleCreate }) {
+function ModalBox({
+  isOpen,
+  onClose,
+  handleCreate,
+  isDelete,
+  title,
+  placeholder,
+}) {
   const [value, setValue] = useState("");
   const handleChange = (event) => setValue(event.target.value);
 
@@ -20,18 +27,20 @@ function ModalBox({ isOpen, onClose, handleCreate }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent mx={"8px"}>
-          <ModalHeader>Pointer Name</ModalHeader>
+          <ModalHeader>{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
             auctor. Sit amet, consectetur adipiscing consectetur adipiscing
             elit.
-            <Input
-              mt={"5px"}
-              value={value}
-              onChange={handleChange}
-              placeholder="Name Pointer"
-            />
+            {!isDelete && (
+              <Input
+                mt={"5px"}
+                value={value}
+                onChange={handleChange}
+                placeholder={placeholder}
+              />
+            )}
           </ModalBody>
 
           <ModalFooter>
@@ -46,11 +55,11 @@ function ModalBox({ isOpen, onClose, handleCreate }) {
             <Button
               colorScheme="messenger"
               onClick={() => {
-                handleCreate(value);
+                isDelete ? handleCreate() : handleCreate(value);
                 setValue("");
               }}
             >
-              Create
+              {isDelete ? "Delete" : "Create"}
             </Button>
           </ModalFooter>
         </ModalContent>

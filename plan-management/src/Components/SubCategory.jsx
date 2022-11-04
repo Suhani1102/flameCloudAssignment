@@ -6,6 +6,7 @@ import {
   AccordionPanel,
   Box,
   Button,
+  Image,
 } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import Pointer from "./Pointer";
@@ -27,7 +28,7 @@ const SubCategory = ({ subCatData, planData, setPlanData }) => {
     <Box>
       <Accordion allowMultiple>
         {subCatData.map((subCat) => (
-          <AccordionItem key={subCat.id}>
+          <AccordionItem key={subCat.id} backgroundColor="#FFFFFF">
             {({ isExpanded }) => (
               <>
                 <h2>
@@ -37,13 +38,25 @@ const SubCategory = ({ subCatData, planData, setPlanData }) => {
                     ) : (
                       <AddIcon fontSize="12px" />
                     )}
-                    <Box flex="1" textAlign="left" marginLeft={"15px"}>
-                      {subCat.subCategoryName}
+                    <Box
+                      flex="1"
+                      textAlign="left"
+                      marginLeft={"15px"}
+                      display={"flex"}
+                      alignItems={"center"}
+                    >
+                      <Image src="/dragIcon.svg" />
+                      <Box ml="4px"> {subCat.subCategoryName}</Box>
                     </Box>
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <Pointer key={subCat.id} pointerData={subCat.pointers} />
+                  <Pointer
+                    key={subCat.id}
+                    pointerData={subCat.pointers}
+                    planData={planData}
+                    setPlanData={setPlanData}
+                  />
                   <Button
                     colorScheme="messenger"
                     variant="outline"
@@ -60,7 +73,8 @@ const SubCategory = ({ subCatData, planData, setPlanData }) => {
                     isOpen={pointerModal}
                     onClose={() => setPointerModal(false)}
                     handleCreate={addPointer}
-                    subCat={subCat}
+                    title="Pointer Name"
+                    placeholder={"Name Pointer"}
                   />
                 </AccordionPanel>
               </>

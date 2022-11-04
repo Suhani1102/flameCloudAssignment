@@ -6,26 +6,33 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  Image,
 } from "@chakra-ui/react";
 import SubCategory from "./SubCategory";
 
 const Category = ({ catData, setPlanData }) => {
   console.log(catData);
   return (
-    <div>
+    <Box>
       <Accordion defaultIndex={[0]} allowMultiple>
         {catData.map((item) => {
           return (
-            <AccordionItem key={item.id}>
+            <AccordionItem key={item.id} backgroundColor={"#F1F5F9"}>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    {item.categoryName}
+                  <Box
+                    flex="1"
+                    textAlign="left"
+                    display={"flex"}
+                    alignItems="center"
+                  >
+                    <Image src="/dragIcon.svg" />
+                    <Box ml="4px"> {item.categoryName}</Box>
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <AccordionPanel pb={4}>
+              <AccordionPanel pb={4} backgroundColor="#FFFFFF">
                 <SubCategory
                   key={item.id}
                   subCatData={item.subCategories}
@@ -37,7 +44,7 @@ const Category = ({ catData, setPlanData }) => {
           );
         })}
       </Accordion>
-    </div>
+    </Box>
   );
 };
 
